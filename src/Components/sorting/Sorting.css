@@ -1,0 +1,26 @@
+
+.sorting-container {
+    margin: 20px 0; 
+}
+
+label {
+    margin-right: 10px; 
+    font-weight: bold; 
+}
+
+.unique-select {
+    border: none; 
+    padding: 4.8px;
+    font-size: 16px; 
+ 
+
+    color: #a3a3a3;
+    cursor: pointer; 
+    border-bottom: 2px solid black;
+}
+
+
+
+option {
+    padding: 10px; 
+}

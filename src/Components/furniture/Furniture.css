@@ -1,0 +1,22 @@
+.wrapper-function {
+    max-width: 1127px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+.wrapper-function {
+    display: flex;
+    flex-direction: column; 
+}
+
+.finder-sorting-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px; 
+}
+
+.finder-sorting-container > * {
+    margin: 0 10px; 
+    width: 250px;
+}

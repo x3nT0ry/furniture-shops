@@ -1,0 +1,71 @@
+@font-face {
+    font-family: "Old English";
+    src: url("../../Fonts/Old-English-Text-MT-V2.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.footer {
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+}
+
+.wrapper1 {
+    max-width: 1127px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.nav li {
+    margin: 0 10px;
+}
+
+.nav .nav-link {
+    color: #ffffff;
+    font-size: 16px;
+    transition: color 0.3s;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav .nav-link:hover {
+    color: #c10015;
+    text-decoration: none;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+}
+
+.social-links a {
+    margin: 0 10px;
+}
+
+.social-links img {
+    width: 35px;
+    height: 35px;
+}
+.contentF {
+    margin-left: 52px;
+}
+
+.text-footer {
+    color: #fffefe;
+    margin: 0;
+    font-size: 36px;
+    margin-top: 40px;
+    font-family: "Old English";
+    text-align: center;
+}

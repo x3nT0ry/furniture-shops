@@ -1,0 +1,23 @@
+.finder-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    margin-right: 13px;
+    width: 25px;
+    height: 25px;
+}
+
+.finder-input {
+    border: none;
+    outline: none; 
+    padding: 8px;
+    font-size: 16px; 
+    flex: 1; 
+    transition: border-bottom 0.3s; 
+}
+
+.finder-input:focus {
+    border-bottom: 2px solid #000000; 
+}

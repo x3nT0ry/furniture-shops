@@ -1,0 +1,15 @@
+.no-result-image {
+    display: block;
+    max-width: 365px;
+    height: auto;
+    opacity: 0.6;
+    margin-top: 100px;
+}
+
+.no-result-text {
+    margin-top: 25px; 
+    margin-bottom: 40px;
+    font-size: 22px;
+    opacity: 0.6;
+    margin-bottom: 150px;
+}

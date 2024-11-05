@@ -1,0 +1,19 @@
+.photo-container {
+    height: 480px; 
+    background-image: url('../../Images/photo.jpeg');
+    background-size: cover;
+    background-position: center; 
+    display: flex;           
+    align-items: center;    
+    justify-content: flex-start; 
+    padding-left: 20px;     
+}
+
+.photo-text {
+    color: white;           
+    font-size: 43px;       
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    line-height: 1.6;    
+    margin: 0;           
+    padding-left: 19.5%;
+}

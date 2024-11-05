@@ -1,0 +1,41 @@
+.button-container {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 1;
+    
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+.button-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom right,
+        #c10015 50%,
+        #c10015 30%,
+        black 30%,
+        black 100%
+    );
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.button-container:hover::before {
+    opacity: 1;
+}
+
+.button-container:hover {
+    background-color: black; /* Убедитесь, что фон остается черным при наведении */
+    color: white; /* Цвет текста при наведении */
+}

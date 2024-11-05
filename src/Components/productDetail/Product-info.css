@@ -1,0 +1,60 @@
+.counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    width: 160px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 0;
+}
+
+.counter-icon {
+    width: 13px;
+    height: 13px;
+    cursor: pointer;
+    margin: 0 20px;
+}
+
+.quantity-input {
+    width: 60px;
+    text-align: center;
+    border: none;
+    font-size: 22px;
+    margin: 0;
+    padding: 1px;
+    border-radius: 1px;
+}
+
+.product-name1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #1f1f1f;
+    margin: 0;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #3a3a3a;
+    margin: 40px 0;
+}
+
+.product-counter1 {
+    max-width: 1124px;
+}
+
+.product-description {
+    font-size: 15px;
+    color: #3a3a3a;
+    margin: 0;
+    width: 100%;
+    max-width: 460px;
+    word-wrap: break-word;
+}
+
+.divider {
+    height: 1px;
+    background-color: #ccc;
+    margin: 40px 0;
+}

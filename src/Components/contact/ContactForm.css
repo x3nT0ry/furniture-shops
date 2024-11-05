@@ -1,0 +1,104 @@
+.form-wrapper {
+    max-width: 1127px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    margin-top: 79px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding-bottom: 100px;
+    flex-direction: unset;
+}
+
+.thank-you-message {
+    text-align: center;
+    font-size: 35px;
+    color: #4CAF50; 
+    margin-top: 198px;
+}
+
+.form-column {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.form-column:last-child {
+    margin-right: 0;
+}
+
+.form-label {
+    margin-bottom: 15px;
+}
+
+.form-label label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-wrapper input[type="text"],
+.form-wrapper input[type="email"],
+.phone-input, /* Додаємо клас для інпуту телефону */
+.form-wrapper textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.phone-input {
+    padding-left: 30px; /* Залишаємо простір для прапора */
+    background-image: url('../../Images/ukraine.png'); /* Шлях до зображення прапора */
+    background-repeat: no-repeat;
+    background-position: 5px center; /* Встановлюємо позицію прапора */
+    background-size: 20px 20px; /* Розміри прапора */
+}
+
+.form-wrapper textarea {
+    height: 100px;
+    resize: vertical;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.5;
+}
+
+.contact-form-title {
+    text-align: center;
+    font-size: 72px;
+    color: #000000;
+    margin: 50px 0;
+    font-family: "Old English";
+}
+
+.back-icon1 {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.return-message2 {
+    text-align: center; /* Центрирует текст по горизонтали */
+    margin: 87px 0; /* Отступ сверху для отделения от других элементов */
+    font-size: 20px; /* Размер шрифта */
+    color: #4CAF50; /* Цвет текста, вы можете изменить его на нужный */
+}
+
+.back-link1 {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.back-text1 {
+    color: #333;
+}
+
+.back-text1:hover {
+    color: #c10015;
+    transition: color 0.2s ease;
+}

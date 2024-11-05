@@ -1,0 +1,38 @@
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 20px 10px;
+}
+
+.nav-item.active {
+    background-color: black;
+    border-color: white;
+    border: 1px solid black;
+}
+
+.nav-item img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.nav-text {
+    font-size: 18px;
+    color: black;
+    transition: color 0.3s ease;
+}
+
+.nav-item.active .nav-text {
+    color: white; 
+}
+
+.empty-space {
+    height: 173px;
+    border: 1px solid black;
+}

@@ -1,0 +1,22 @@
+.panel-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    width: 100%;
+}
+
+.panel-image {
+    max-width: 100%;
+    height: auto;
+    opacity: 0.6;
+}
+
+.panel-text {
+    margin-top: 20px;
+    color: #393e44;
+    font-size: 24px;
+    font-weight: bold;
+}

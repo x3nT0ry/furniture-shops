@@ -1,0 +1,68 @@
+
+.podrobniy-product-wrapper {
+    max-width: 1124px; 
+    margin: 0 auto; 
+    padding: 20px;
+}
+
+.podrobniy-product {
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.titles-container {
+    display: flex; 
+    justify-content: center; 
+    margin-bottom: 50px;
+}
+
+.clickable-link {
+    margin: 0 20px; 
+    cursor: pointer; 
+    color: grey; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: color 0.3s; 
+    font-size: 22px; 
+    background-color: white;
+    border: none;
+}
+
+.clickable-link.active {
+    color: black;
+}
+
+.clickable-link.inactive:hover {
+    color: black;
+}
+
+.description-content {
+    margin-top: 10px;
+}
+
+.description-content p {
+    margin: 20px 0;
+    font-size: 18px; 
+    line-height: 1.5;
+    color: #3a3a3a;
+}
+
+.characteristics-content { 
+    margin-bottom: 50px;
+}
+
+.characteristics-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    font-size: 18px;
+    color: #3a3a3a; 
+}
+
+.characteristics-table tr:nth-child(even) {
+    background-color: #f5f5f5; 
+}
+
+.characteristics-table tr:nth-child(odd) td {
+    background-color: rgb(163, 159, 159); 
+    color: white; 
+}

@@ -1,0 +1,10 @@
+.admin-container1 {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.navigation1 {
+    margin-right: auto;
+}
+
