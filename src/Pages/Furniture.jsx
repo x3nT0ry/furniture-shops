@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useRef } from "react"; 
-import { useLocation, useNavigate } from "react-router-dom"; 
+import React, { useEffect, useState, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Header from "../Components/header/Header";
 import Footer from "../Components/footer/Footer";
 import LineFurniture from "../Components/lineFurniture/LineFurniture";
@@ -7,28 +7,40 @@ import Photo from "../Components/lphoto/Photo";
 import Products from "../Components/furniture/ProductsCard";
 import Finder from "../Components/finder/Finder";
 import Sorting from "../Components/sorting/Sorting";
-import { filterByCategory } from "../Components/furniture/Function"; 
-import axios from 'axios';
+import axios from "axios";
 import Button from "../Components/button/Button";
 import "../Components/furniture/Furniture.css";
 
 export default function Furniture() {
     const location = useLocation();
-    const navigate = useNavigate(); 
-    const [filteredProducts, setFilteredProducts] = useState([]); 
-    const [originalProducts, setOriginalProducts] = useState([]); 
+    const navigate = useNavigate();
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    const [originalProducts, setOriginalProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
-    const [selectedSorting, setSelectedSorting] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
 
     const finderRef = useRef();
     const sortingRef = useRef();
 
+    const filterByCategory = (products, category) => {
+        if (!category) return products;
+        return products.filter(product => product.category === category);
+    };
+
+    const filterBySearch = (products, searchTerm) => {
+        if (!searchTerm) return products;
+        return products.filter(product =>
+            product.name.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+    };
+
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/products');
-                setOriginalProducts(response.data); 
+                const response = await axios.get(
+                    "http://localhost:3001/api/products"
+                );
+                setOriginalProducts(response.data);
                 setFilteredProducts(response.data);
             } catch (error) {
                 console.error("Error fetching products:", error);
@@ -42,29 +54,19 @@ export default function Furniture() {
         const query = new URLSearchParams(location.search);
         const category = query.get("category");
 
-        if (category) {
-            filterByCategory(originalProducts, setFilteredProducts)(category); 
-            setSelectedCategory(category);
-        } else {
-            setFilteredProducts(originalProducts); 
-            setSelectedCategory(null);
-        }
-    }, [location.search, originalProducts]);
+        let filtered = filterByCategory(originalProducts, category);
+        filtered = filterBySearch(filtered, searchTerm);
 
-    useEffect(() => {
-        if (searchTerm) {
-            const filtered = originalProducts.filter(product =>
-                product.name.toLowerCase().includes(searchTerm.toLowerCase())
-            );
-            setFilteredProducts(filtered);
-        } else {
-            setFilteredProducts(originalProducts); 
-        }
-    }, [searchTerm, originalProducts]); 
+        setFilteredProducts(filtered);
+        setSelectedCategory(category);
+    }, [location.search, originalProducts, searchTerm]);
 
     const handleCategorySelect = (category) => {
-        filterByCategory(originalProducts, setFilteredProducts)(category);
+        const filtered = filterByCategory(originalProducts, category);
+        setFilteredProducts(filtered);
         setSelectedCategory(category);
+
+        navigate(`/furniture?category=${category}`);
     };
 
     const handleResetFilters = () => {
@@ -80,11 +82,11 @@ export default function Furniture() {
             sortingRef.current.resetSorting();
         }
 
-        navigate('/furniture');
+        navigate("/furniture");
     };
 
     const searchHandler = (term) => {
-        setSearchTerm(term); 
+        setSearchTerm(term);
     };
 
     return (
@@ -102,7 +104,10 @@ export default function Furniture() {
                         <Finder ref={finderRef} onSearch={searchHandler} />
                     </div>
                     <div className="wrapper-function-item">
-                        <Button onClick={handleResetFilters}>
+                        <Button
+                            onClick={handleResetFilters}
+                            style={{ width: "100%" }}
+                        >
                             Скинути всі фільтри
                         </Button>
                     </div>
@@ -111,13 +116,11 @@ export default function Furniture() {
                             ref={sortingRef}
                             setFilteredProducts={setFilteredProducts}
                             originalProducts={originalProducts}
-                            selectedSorting={selectedSorting}
-                            setSelectedSorting={setSelectedSorting}
                         />
                     </div>
                 </div>
             </div>
-            <Products filteredProducts={filteredProducts} searchTerm={searchTerm} />
+            <Products filteredProducts={filteredProducts} />
             <Footer />
         </>
     );

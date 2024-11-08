@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "../button/Button";
 import minusIcon from "../../Images/minus.png";
 import minusIconHover from "../../Images/minus-hover.png";
 import plusIcon from "../../Images/plus.png";
 import plusIconHover from "../../Images/plus-hover.png";
 import "./Product-info.css";
+import { CartContext } from "../cart/CartContext";
 
-const ProductCounter = ({ productId }) => {
-    const [product, setProduct] = useState({});
+const ProductInfo = ({ productId }) => {
+    const [product, setProduct] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [isMinusHovered, setIsMinusHovered] = useState(false);
     const [isPlusHovered, setIsPlusHovered] = useState(false);
+    const { cartItems, addToCart } = useContext(CartContext);
+    const [isAddedToCart, setIsAddedToCart] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -31,6 +36,14 @@ const ProductCounter = ({ productId }) => {
         fetchProduct();
     }, [productId]);
 
+    useEffect(() => {
+        if (product && cartItems.find(item => item.id === product.id)) {
+            setIsAddedToCart(true);
+        } else {
+            setIsAddedToCart(false);
+        }
+    }, [cartItems, product]);
+
     const increaseQuantity = () => {
         setQuantity((prev) => prev + 1);
     };
@@ -45,6 +58,19 @@ const ProductCounter = ({ productId }) => {
         const value = Math.max(1, parseInt(e.target.value) || 1);
         setQuantity(value);
     };
+
+    const handleAddToCart = () => {
+        if (isAddedToCart) {
+            navigate("/cart");
+        } else {
+            addToCart(product, quantity);  
+            setIsAddedToCart(true);
+        }
+    };
+
+    if (!product) {
+        return <div>Завантаження...</div>;
+    }
 
     return (
         <div className="product-counter1">
@@ -68,6 +94,7 @@ const ProductCounter = ({ productId }) => {
                     value={quantity}
                     onChange={handleQuantityChange}
                     className="quantity-input"
+                    min="1" 
                 />
                 <img
                     src={isPlusHovered ? plusIconHover : plusIcon}
@@ -79,10 +106,12 @@ const ProductCounter = ({ productId }) => {
                 />
             </div>
             <div style={{ width: "100%" }}>
-                <Button className="buy-button">Додати в корзину</Button>
+                <Button className="buy-button" onClick={handleAddToCart}>
+                    {isAddedToCart ? "Перейти до корзини" : "Додати в корзину"}
+                </Button>
             </div>
         </div>
     );
 };
 
-export default ProductCounter;
+export default ProductInfo;

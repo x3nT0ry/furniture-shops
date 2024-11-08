@@ -5,13 +5,12 @@ import backArrow from "../../Images/left-arrow.png";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 
-
 export default function ContactForm() {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
         email: "",
-        phone: "+380 ", 
+        phone: "+380 ",
         country: "",
         city: "",
         question: "",
@@ -22,8 +21,8 @@ export default function ContactForm() {
     const navigate = useNavigate();
 
     const formatPhoneNumber = (value) => {
-        const cleaned = value.replace(/[^0-9]/g, ""); 
-        const withoutCode = cleaned.slice(3); 
+        const cleaned = value.replace(/[^0-9]/g, "");
+        const withoutCode = cleaned.slice(3);
 
         const match = withoutCode.match(
             /^(\d{0,2})(\d{0,2})(\d{0,2})(\d{0,3})$/
@@ -32,7 +31,7 @@ export default function ContactForm() {
         if (match) {
             return `+380 (${match[1] || ""}) ${match[2] || ""} ${
                 match[3] || ""
-            } ${match[4] || ""}`; 
+            } ${match[4] || ""}`;
         }
 
         return value;
@@ -42,7 +41,6 @@ export default function ContactForm() {
         const { name, value } = e.target;
 
         if (name === "phone") {
-           
             if (
                 value.startsWith("+380") &&
                 value.replace(/[^0-9]/g, "").length <= 12
@@ -74,7 +72,7 @@ export default function ContactForm() {
 
         const updatedFormData = {
             ...formData,
-            phone: formData.phone.replace("+", ""), 
+            phone: formData.phone.replace("+", ""),
             tracking_code: formData.tracking_code || 0,
             captchaToken: captchaValue,
         };
@@ -94,7 +92,7 @@ export default function ContactForm() {
 
                 setTimeout(() => {
                     setIsSubmitted(false);
-                    window.location.reload();
+                    navigate("/furniture");
                 }, 4000);
             } else {
                 const errorData = await response.json();
@@ -173,7 +171,7 @@ export default function ContactForm() {
                                 <input
                                     type="tel"
                                     name="phone"
-                                    className="phone-input" 
+                                    className="phone-input"
                                     required
                                     value={formData.phone}
                                     onChange={handleChange}

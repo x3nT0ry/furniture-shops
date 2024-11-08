@@ -6,6 +6,7 @@ import CenteredContainer from "../Components/Contain/Container";
 import "./Logging.css";
 import loginIcon from "../../Images/login.png";
 import passwordIcon from "../../Images/password.png";
+import backArrow from "../../Images/left-arrow.png";
 
 function Logging() {
     const [login, setLogin] = useState("");
@@ -50,7 +51,20 @@ function Logging() {
         <CenteredContainer>
             <div className="login-container">
                 <form onSubmit={handleSubmit}>
+                    <div className="back-link" onClick={() => navigate("/")}>
+                        <img src={backArrow} alt="Back" className="back-icon" />
+                        <div className="back-text">Повернутися до магазину</div>
+                    </div>
                     <div className="title">Авторизація</div>
+
+                    <input
+                        type="texts"
+                        id="username"
+                        name="username"
+                        style={{ display: "none" }}
+                        aria-hidden="true"
+                    />
+
                     <div className="input-group">
                         <input
                             type="texts"
@@ -59,6 +73,7 @@ function Logging() {
                             onChange={(e) => setLogin(e.target.value)}
                             placeholder="Логін"
                             required
+                            autoComplete="username"
                         />
                         <img
                             src={loginIcon}
@@ -68,12 +83,13 @@ function Logging() {
                     </div>
                     <div className="input-group">
                         <input
-                            type={showPassword ? "text" : "password"}
+                            type={showPassword ? "texts" : "password"}
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             placeholder="Пароль"
                             required
+                            autoComplete="new-password"
                         />
                         <img
                             src={passwordIcon}
@@ -85,7 +101,6 @@ function Logging() {
                     </div>
                     {error && <div className="error-message">{error}</div>}
                     <Button type="submit">Увійти</Button>
-                
                 </form>
             </div>
         </CenteredContainer>

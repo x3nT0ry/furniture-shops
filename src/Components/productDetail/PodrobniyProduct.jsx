@@ -16,7 +16,6 @@ const PodrobniyProduct = ({ productId }) => {
                 );
 
                 const info = response.data.additionalInfo;
-                console.log("Raw additionalInfo:", info);
 
                 if (typeof info === "string") {
                     try {

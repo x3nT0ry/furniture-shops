@@ -47,7 +47,6 @@
     font-size: 16px;
     transition: color 0.3s;
     text-decoration: none;
-    font-weight: bold;
 }
 
 .navigation .nav-link:hover {
@@ -55,14 +54,29 @@
     text-decoration: none;
 }
 
-.cart img {
-    width: 43px;
-    height: 41px;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.cart {
+    position: relative;
 }
 
-.cart:hover img {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.cart img {
+    width: 38px;
+    height: 36px;
+    cursor: pointer;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #c10015;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 16px;
+    height: 16px;
+    box-sizing: border-box;
 }

@@ -15,7 +15,7 @@ export default function TextPayDel() {
                     Visa та MasterCard. Оплата за допомогою платіжних карток
                     здійснюється наступним способом:
                 </p>
-                <ul className="custom-list"> {/* Виправлено тут */}
+                <ul className="custom-list"> 
                     <li>
                         під час оформлення замовлення на сайті Вам буде
                         запропоновано оплату.
@@ -97,7 +97,7 @@ export default function TextPayDel() {
                     Пошта, формату AA********UA - УкрПошта)
                 </p>
                 <p>Посилання на сервіси для відстеження:</p>
-                <ul className="custom-list"> {/* Виправлено тут */}
+                <ul className="custom-list"> 
                     <li>
                         <a
                             href="https://novapost.com/en-ua/"

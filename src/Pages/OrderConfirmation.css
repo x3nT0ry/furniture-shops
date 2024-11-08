@@ -1,0 +1,67 @@
+.order-confirmation {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 2px solid #4caf50;
+    border-radius: 8px;
+    background-color: #f9fff9;
+    text-align: center;
+}
+
+.order-cancel {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    border: 2px solid #af4c4c;
+    border-radius: 8px;
+    background-color: #fff9f9;
+    text-align: center;
+}
+
+.order-confirmation h2 {
+    color: #4caf50;
+    margin-bottom: 20px;
+}
+.order-cancel h2 {
+    color: #af4c4c;
+    margin-bottom: 20px;
+}
+.order-confirmation p {
+    font-size: 1.1em;
+    color: #333;
+    margin: 10px 0;
+}
+.order-cancel p {
+    font-size: 1.1em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.order-confirmation button {
+    padding: 10px 20px;
+    background-color: #0fba00;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.order-confirmation button:hover {
+    background-color: #439932;
+}
+.order-cancel button {
+    padding: 10px 20px;
+    background-color: #ba0000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.order-cancel button:hover {
+    background-color: #9e3b3b;
+}

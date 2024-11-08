@@ -9,9 +9,6 @@ const Sorting = forwardRef(({ setFilteredProducts, originalProducts }, ref) => {
         const value = event.target.value;
         setSortValue(value);
 
-        console.log("Selected sort value:", value);
-        console.log("Original products:", originalProducts);
-
         if (value === "") {
             setFilteredProducts(originalProducts);
             return;
@@ -21,7 +18,6 @@ const Sorting = forwardRef(({ setFilteredProducts, originalProducts }, ref) => {
             const response = await axios.get(
                 `http://localhost:3001/api/sorts?sort=${value}`
             );
-            console.log("Sorted products received:", response.data);
             setFilteredProducts(response.data);
         } catch (error) {
             console.error("Error fetching sorted products:", error);
@@ -40,7 +36,7 @@ const Sorting = forwardRef(({ setFilteredProducts, originalProducts }, ref) => {
     return (
         <div className="sorting-container">
             <select
-                id="sortingSelect"
+                id="sort"
                 className="unique-select"
                 value={sortValue}
                 onChange={handleSortChangeInternal}

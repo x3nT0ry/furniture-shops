@@ -12,12 +12,11 @@
 
 .login-container,
 .registration-container {
-
     background-color: #f9f9f9;
     width: 100%;
     max-width: 350px;
     height: 100%;
-    max-height: 370px;
+    max-height: 410px;
     padding: 0 30px 30px 30px;
     border: 2px solid #ccc;
     border-radius: 5px;
@@ -31,7 +30,7 @@
 }
 
 .input-group {
-    margin-bottom: 25px;
+    margin-bottom: 22px;
     position: relative;
 }
 
@@ -72,9 +71,10 @@ input {
     padding: 15px;
     margin-top: 5px;
     box-sizing: border-box;
-    border-radius: 25px; 
+    border-radius: 25px;
     border: 1px solid #ccc;
     transition: border-color 0.2s ease;
+    font-size: 16px;
 }
 
 input:focus {
@@ -83,7 +83,7 @@ input:focus {
 
 .error,
 .error-message,
-.return-message{
+.return-message {
     color: #c10015;
     margin-bottom: 20px;
 }
@@ -93,25 +93,23 @@ input:focus {
     margin: 120px 0 20px 0;
 }
 .registration-message {
-    display: flex;                    
-    align-items: center;              
-    color: #333;                    
-    font-size: 16px;                 
-    margin-top: 20px;                
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-size: 16px;
+    margin-top: 20px;
 }
 .registration-message div {
-    cursor: pointer;                  
-    text-decoration: underline;       
-    color: #000000;                 
-    margin-left: 5px;                
+    cursor: pointer;
+    text-decoration: underline;
+    color: #000000;
+    margin-left: 5px;
 }
 
 .registration-message div:hover {
-    color: #c10015;                 
-    transition: color 0.2s ease;    
+    color: #c10015;
+    transition: color 0.2s ease;
 }
-
-
 
 .return-message {
     color: green;

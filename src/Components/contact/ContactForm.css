@@ -8,6 +8,7 @@
 }
 
 .contact-form {
+    font-size: 18px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -18,7 +19,7 @@
 .thank-you-message {
     text-align: center;
     font-size: 35px;
-    color: #4CAF50; 
+    color: #4caf50;
     margin-top: 198px;
 }
 
@@ -43,21 +44,31 @@
 
 .form-wrapper input[type="text"],
 .form-wrapper input[type="email"],
-.phone-input, /* Додаємо клас для інпуту телефону */
+.phone-input,
 .form-wrapper textarea {
+    font-size: 15px;
     width: 100%;
     max-width: 500px;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: none; 
+    border-bottom: 1px solid #ccc; 
+    border-radius: 0; 
+    background-color: transparent; 
+    outline: none; 
+}
+.form-wrapper input[type="text"]:focus,
+.form-wrapper input[type="email"]:focus,
+.phone-input:focus,
+.form-wrapper textarea:focus {
+    border-bottom: 2px solid #000000; 
 }
 
 .phone-input {
-    padding-left: 30px; /* Залишаємо простір для прапора */
-    background-image: url('../../Images/ukraine.png'); /* Шлях до зображення прапора */
+    padding-left: 30px; 
+    background-image: url("../../Images/ukraine.png"); 
     background-repeat: no-repeat;
-    background-position: 5px center; /* Встановлюємо позицію прапора */
-    background-size: 20px 20px; /* Розміри прапора */
+    background-position: 5px center; 
+    background-size: 20px 20px; 
 }
 
 .form-wrapper textarea {
@@ -81,10 +92,10 @@
     margin-right: 5px;
 }
 .return-message2 {
-    text-align: center; /* Центрирует текст по горизонтали */
-    margin: 87px 0; /* Отступ сверху для отделения от других элементов */
-    font-size: 20px; /* Размер шрифта */
-    color: #4CAF50; /* Цвет текста, вы можете изменить его на нужный */
+    text-align: center;
+    margin: 87px 0; 
+    font-size: 20px; 
+    color: #4caf50; 
 }
 
 .back-link1 {

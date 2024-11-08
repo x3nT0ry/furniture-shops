@@ -1,0 +1,133 @@
+.cart-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 61px;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid #ddd;
+    padding-bottom: 60px;
+    width: 100%;
+}
+
+.cart-item-info {
+    flex: 0 0 60%;
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-details {
+    display: flex;
+    align-items: center;
+    width: 100%; 
+}
+
+.cart-item-image {
+    width: 124px;
+    height: 115px;
+    margin-right: 10px;
+    flex-shrink: 0; 
+}
+
+.cart-item-name {
+    font-size: 20px;
+    color: #000;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+}
+
+.product-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 100%; 
+}
+
+.product-link:hover {
+    cursor: pointer;
+}
+
+.cart-item-quantity {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: center;
+}
+
+.counter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.counter-icon {
+    width: 19px;
+    height: 17px;
+    cursor: pointer;
+}
+
+.quantity-input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.cart-item-price {
+    flex: 0 0 15%;
+    text-align: center;
+    font-size: 20px;
+    color: #000;
+}
+
+.cart-item-remove {
+    flex: 0 0 5%;
+    display: flex;
+    justify-content: end;
+}
+
+.remove-icon {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+
+.cart-summary {
+    text-align: right;
+    font-size: 1.2em;
+    color: #333;
+    margin-top: 20px;
+}
+
+.cart-total {
+    color: #000; 
+    text-align: right; 
+    font-size: 1.2em;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.checkout-button-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px; 
+    margin-bottom: 60px; 
+}
+
+.total-price1 {
+    font-size: 1.2em;
+    color: #c10015;
+    text-align: right;
+}
