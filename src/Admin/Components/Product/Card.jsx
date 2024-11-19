@@ -6,6 +6,7 @@ import "../Request/Request.css";
 const Card = () => {
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
+    const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate();
 
     const fetchProducts = async () => {
@@ -23,7 +24,15 @@ const Card = () => {
         fetchProducts();
     }, []);
 
-    const handleDeleteClick = async () => {
+    const openModal = () => {
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
+    };
+
+    const handleDelete = async () => {
         if (selectedProducts.length > 0) {
             try {
                 await Promise.all(
@@ -42,8 +51,10 @@ const Card = () => {
                     )
                 );
                 setSelectedProducts([]);
+                setShowModal(false);
             } catch (error) {
                 console.error("Error deleting products:", error);
+                setShowModal(false);
             }
         }
     };
@@ -84,7 +95,7 @@ const Card = () => {
                     Додати
                 </button>
                 {selectedProducts.length > 0 && (
-                    <button className="button" onClick={handleDeleteClick}>
+                    <button className="button" onClick={openModal}>
                         Видалити
                     </button>
                 )}
@@ -122,6 +133,7 @@ const Card = () => {
                                             onChange={() =>
                                                 handleCheckboxChange(product)
                                             }
+                                            onClick={(e) => e.stopPropagation()}
                                         />
                                     </td>
                                     <td>{product.name}</td>
@@ -149,9 +161,10 @@ const Card = () => {
                                     <td>
                                         <button
                                             className="details-button"
-                                            onClick={() =>
-                                                handleEditClick(product.id)
-                                            }
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                handleEditClick(product.id);
+                                            }}
                                         >
                                             Змінити
                                         </button>
@@ -161,6 +174,28 @@ const Card = () => {
                     </tbody>
                 </table>
             </div>
+
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal">
+                        <p>Ви впевнені, що хочете видалити вибрані товари?</p>
+                        <div className="modal-buttons">
+                            <button
+                                onClick={handleDelete}
+                                className="modal-button confirm"
+                            >
+                                Так, видалити
+                            </button>
+                            <button
+                                onClick={closeModal}
+                                className="modal-button cancel"
+                            >
+                                Скасувати
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

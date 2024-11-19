@@ -1,0 +1,199 @@
+.modal-overlay2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+.modal2 {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1001; 
+    width: 30%;
+}
+
+.modal2 h3 {
+    margin-top: 0;
+}
+
+.modal-buttons2 {
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.save-button2,
+.cancel-button2,
+.confirm-delete-button2 {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s, transform 0.2s;
+    border-radius: 5px;
+}
+
+.save-button2:hover,
+.cancel-button2:hover,
+.confirm-delete-button2:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.confirm-delete-button2 {
+    background-color: #c10015;
+}
+
+.confirm-delete-button2:hover {
+    background-color: #a30012;
+}
+
+.form-group2 {
+    margin-bottom: 15px;
+}
+
+.form-group2 label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group2 input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.option-field2 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.option-field2 input {
+    flex: 1;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+.remove-option-button2 {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.add-option-button2 {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.remove-option-button2:hover {
+    background-color: #c10015;
+}
+
+.add-option-button2:hover {
+    background-color: #c10015;
+}
+
+
+.table-container {
+    max-width: 1600px;
+    max-height: 400px;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Стилі для таблиці */
+.characteristics-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #727070;
+}
+
+.characteristics-table thead {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 0;
+}
+
+.characteristics-table th {
+    padding: 12px;
+    text-align: left;
+    background: linear-gradient(to right, #f2f2f2, #e0e0e0);
+    color: black;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.characteristics-table td {
+    border: 1px solid #ffffff;
+    padding: 12px;
+    text-align: left;
+    color: rgb(255, 255, 255);
+}
+
+.characteristics-table tr:nth-child(odd) {
+    background-color: #8c8c8c;
+}
+
+.characteristics-table tr:nth-child(even) {
+    background-color: #727070;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
+}
+
+.buttons-container .add-button,
+.buttons-container .delete-button {
+    color: white;
+    background-color: black;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: background-color 0.3s, transform 0.2s;
+    border-radius: 5px;
+}
+
+.buttons-container .add-button:hover,
+.buttons-container .delete-button:hover {
+    opacity: 0.8;
+    transform: translateY(-2px);
+}
+
+.edit-button {
+    background-color: #c10015;
+    color: white;
+    border: none;
+    padding: 15px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.edit-button:hover {
+    background-color: #c10017b0;
+    transform: translateY(-2px);
+}
+
+.new-characteristic-container {
+    margin-left: 40px;
+    max-width: 100%;
+    margin: 0 auto;
+}

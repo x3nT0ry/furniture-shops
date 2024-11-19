@@ -115,3 +115,16 @@
 .back-button:hover {
     background-color: #c10015;
 }
+.pdf-button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.pdf-button:hover {
+    background-color: #c10015;
+}

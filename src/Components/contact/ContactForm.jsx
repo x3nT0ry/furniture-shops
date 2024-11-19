@@ -209,6 +209,16 @@ export default function ContactForm() {
                                     required
                                     value={formData.question}
                                     onChange={handleChange}
+                                    style={{
+                                        borderTop: "none",
+                                        borderLeft: "1px solid #ccc",
+                                        borderRight: "1px solid #ccc",
+                                        borderBottom: "1px solid #ccc",
+                                        padding: "10px",
+                                        borderRadius: "0px",
+                                        width: "100%",
+                                        boxSizing: "border-box",
+                                    }}
                                 ></textarea>
                             </div>
                             <div className="form-label">

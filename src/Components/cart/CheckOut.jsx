@@ -1,10 +1,10 @@
-// Checkout.js
 import React, { useState, useContext, useRef, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import { useNavigate } from "react-router-dom";
 import ukraineFlag from "../../Images/ukraine.png";
 import axios from "axios";
 import "./CheckOut.css";
+import Button from "../../Components/button/Button";
 
 import {
     PayPalScriptProvider,
@@ -31,7 +31,9 @@ const Checkout = () => {
     const [showCitySuggestions, setShowCitySuggestions] = useState(false);
     const [showDepartmentSuggestions, setShowDepartmentSuggestions] =
         useState(false);
+    const [paymentMethod, setPaymentMethod] = useState("");
     const navigate = useNavigate();
+
     const formatPhoneNumber = (value) => {
         let cleaned = value.replace(/[^+\d]/g, "");
 
@@ -141,6 +143,9 @@ const Checkout = () => {
                 newErrors.email = "Невірний формат пошти";
             }
         }
+        if (!paymentMethod) {
+            newErrors.paymentMethod = "Спосіб оплати обов'язковий";
+        }
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -163,6 +168,7 @@ const Checkout = () => {
             email: formValuesRef.current.email,
             telegram: formValuesRef.current.telegram,
             items: sanitizedItems,
+            paymentstatus: paymentMethod === "pay_now" ? 1 : 2,
         };
     };
 
@@ -265,6 +271,7 @@ const Checkout = () => {
             setErrors((prevErrors) => ({ ...prevErrors, phone: "" }));
         }
     };
+
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
         formValuesRef.current.email = e.target.value;
@@ -463,7 +470,7 @@ const Checkout = () => {
                         <div className="input-wrapper">
                             <img
                                 src={ukraineFlag}
-                                alt="Украина"
+                                alt="Україна"
                                 className="flag-icon"
                             />
 
@@ -534,8 +541,63 @@ const Checkout = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="payment-method-options">
+                        <div className="section-title1">Спосіб оплати</div>
+                        <div className="attr">
+                            <div
+                                className={`payment-option ${
+                                    paymentMethod === "pay_now" ? "active" : ""
+                                }`}
+                                onClick={() => setPaymentMethod("pay_now")}
+                            >
+                                <div className="payment-option-label">
+                                    Повна сплата
+                                </div>
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="pay_now"
+                                    checked={paymentMethod === "pay_now"}
+                                    onChange={(e) =>
+                                        setPaymentMethod(e.target.value)
+                                    }
+                                    id="pay_now"
+                                />
+                            </div>
+                            <div
+                                className={`payment-option ${
+                                    paymentMethod === "pay_on_delivery"
+                                        ? "active"
+                                        : ""
+                                }`}
+                                onClick={() =>
+                                    setPaymentMethod("pay_on_delivery")
+                                }
+                            >
+                                <div className="payment-option-label">
+                                    Накладний платіж
+                                </div>
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="pay_on_delivery"
+                                    checked={
+                                        paymentMethod === "pay_on_delivery"
+                                    }
+                                    onChange={(e) =>
+                                        setPaymentMethod(e.target.value)
+                                    }
+                                    id="pay_on_delivery"
+                                />
+                            </div>
+                        </div>
 
-                    {exchangeRate ? (
+                        {errors.paymentMethod && (
+                            <div className="error">{errors.paymentMethod}</div>
+                        )}
+                    </div>
+
+                    {paymentMethod === "pay_now" && exchangeRate ? (
                         <PayPalScriptProvider
                             options={{
                                 "client-id":
@@ -546,7 +608,6 @@ const Checkout = () => {
                                 fundingSource={FUNDING.CARD}
                                 style={{
                                     layout: "vertical",
-
                                     height: 50,
                                 }}
                                 onClick={(data, actions) => {
@@ -606,6 +667,8 @@ const Checkout = () => {
                                             details
                                         );
 
+                                        formValuesRef.current.paymentstatus = 1;
+
                                         await handleSubmit();
                                     } catch (error) {
                                         console.error(
@@ -625,9 +688,15 @@ const Checkout = () => {
                                 }}
                             />
                         </PayPalScriptProvider>
-                    ) : (
-                        <p>Курс валюти ще не завантажено. Спробуйте пізніше.</p>
-                    )}
+                    ) : paymentMethod === "pay_on_delivery" ? (
+                        <Button
+                            className="place-order-button"
+                            onClick={handleFormSubmit}
+                            style={{ width: "100%", marginTop: "2px" }}
+                        >
+                            Оформити замовлення
+                        </Button>
+                    ) : null}
                 </div>
             </div>
         </div>

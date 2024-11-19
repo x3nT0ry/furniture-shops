@@ -41,7 +41,7 @@ export default function AddSlider({ closeModal }) {
     };
 
     return (
-        <div className="modal">
+        <div className="modals">
             <form onSubmit={handleSubmit}>
                 <h2>Додати слайд</h2>
                 <input

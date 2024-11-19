@@ -58,7 +58,7 @@ export default function EditSlider({ closeModal, slide }) {
     };
 
     return (
-        <div className="modal">
+        <div className="modals">
             <form onSubmit={handleSubmit}>
                 <h2>Редагувати слайд</h2>
                 <input

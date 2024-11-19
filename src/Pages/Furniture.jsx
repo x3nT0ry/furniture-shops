@@ -10,6 +10,7 @@ import Sorting from "../Components/sorting/Sorting";
 import axios from "axios";
 import Button from "../Components/button/Button";
 import "../Components/furniture/Furniture.css";
+import Filter from "../Components/filter/Filter";
 
 export default function Furniture() {
     const location = useLocation();
@@ -18,54 +19,82 @@ export default function Furniture() {
     const [originalProducts, setOriginalProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [searchTerm, setSearchTerm] = useState("");
+    const [selectedFilters, setSelectedFilters] = useState({});
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(9);
 
     const finderRef = useRef();
     const sortingRef = useRef();
+    const filterRef = useRef();
 
-    const filterByCategory = (products, category) => {
-        if (!category) return products;
-        return products.filter(product => product.category === category);
-    };
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
 
-    const filterBySearch = (products, searchTerm) => {
-        if (!searchTerm) return products;
-        return products.filter(product =>
-            product.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-    };
+    useEffect(() => {
+        if (currentPage > totalPages) {
+            setCurrentPage(totalPages > 0 ? totalPages : 1);
+        }
+    }, [filteredProducts, currentPage, totalPages]);
+
+    const indexOfLastProduct = currentPage * itemsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
+    const currentProducts = filteredProducts.slice(
+        indexOfFirstProduct,
+        indexOfLastProduct
+    );
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await axios.get(
-                    "http://localhost:3001/api/products"
-                );
-                setOriginalProducts(response.data);
-                setFilteredProducts(response.data);
+                let products;
+
+                if (
+                    Object.keys(selectedFilters).length > 0 ||
+                    searchTerm ||
+                    selectedCategory
+                ) {
+                    const requestBody = { filters: selectedFilters };
+
+                    if (searchTerm) {
+                        requestBody.searchTerm = searchTerm;
+                    }
+
+                    if (selectedCategory) {
+                        requestBody.category = selectedCategory;
+                    }
+
+                    const response = await axios.post(
+                        "http://localhost:3001/api/products/filter",
+                        requestBody
+                    );
+                    products = response.data;
+                } else {
+                    const response = await axios.get(
+                        "http://localhost:3001/api/products"
+                    );
+                    products = response.data;
+                }
+
+                setOriginalProducts(products);
+                setFilteredProducts(products);
             } catch (error) {
                 console.error("Error fetching products:", error);
             }
         };
 
         fetchProducts();
-    }, []);
+    }, [selectedFilters, searchTerm, selectedCategory]);
 
     useEffect(() => {
         const query = new URLSearchParams(location.search);
         const category = query.get("category");
 
-        let filtered = filterByCategory(originalProducts, category);
-        filtered = filterBySearch(filtered, searchTerm);
-
-        setFilteredProducts(filtered);
         setSelectedCategory(category);
-    }, [location.search, originalProducts, searchTerm]);
+    }, [location.search]);
 
     const handleCategorySelect = (category) => {
-        const filtered = filterByCategory(originalProducts, category);
-        setFilteredProducts(filtered);
         setSelectedCategory(category);
-
+        setCurrentPage(1);
         navigate(`/furniture?category=${category}`);
     };
 
@@ -73,6 +102,8 @@ export default function Furniture() {
         setFilteredProducts(originalProducts);
         setSelectedCategory(null);
         setSearchTerm("");
+        setSelectedFilters({});
+        setCurrentPage(1);
 
         if (finderRef.current) {
             finderRef.current.resetSearch();
@@ -82,11 +113,25 @@ export default function Furniture() {
             sortingRef.current.resetSorting();
         }
 
+        if (filterRef.current) {
+            filterRef.current.resetFilters();
+        }
+
         navigate("/furniture");
     };
 
     const searchHandler = (term) => {
         setSearchTerm(term);
+        setCurrentPage(1);
+    };
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const handleFilterChange = (newFilters) => {
+        setSelectedFilters(newFilters);
+        setCurrentPage(1);
     };
 
     return (
@@ -120,7 +165,35 @@ export default function Furniture() {
                     </div>
                 </div>
             </div>
-            <Products filteredProducts={filteredProducts} />
+            <div className="tovargrid">
+                <div className="filter-container1">
+                    <Filter
+                        ref={filterRef}
+                        onFilterChange={handleFilterChange}
+                    />
+                </div>
+                <div className="products-container1">
+                    <Products filteredProducts={currentProducts} />
+                    {totalPages > 1 && (
+                        <div className="pagination">
+                            {Array.from({ length: totalPages }, (_, index) => (
+                                <button
+                                    key={index + 1}
+                                    className={`page-btn ${
+                                        currentPage === index + 1
+                                            ? "active"
+                                            : ""
+                                    }`}
+                                    onClick={() => paginate(index + 1)}
+                                >
+                                    {index + 1}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            </div>
+
             <Footer />
         </>
     );

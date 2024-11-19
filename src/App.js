@@ -23,6 +23,7 @@ import { useAuth } from './Admin/Components/auth/AuthContext';
 import EditCard from "./Admin/Pages/editCard";
 import { CartProvider } from './Components/cart/CartContext';
 import OrderDetails from "./Admin/Pages/OrderDetails";
+import Characteristic from "./Admin/Pages/Characteristic";
 
 
 export default function App() {
@@ -52,6 +53,8 @@ export default function App() {
                 <Route path="/admin-panel/product/:id" element={isAuthenticated ? <EditCard /> : <Navigate to="/admin" />} />
                 <Route path="/admin-panel/slide" element={isAuthenticated ? <Slide /> : <Navigate to="/admin" />} />
                 <Route path="/admin-panel/request/:id_request" element={isAuthenticated ? <RequestDetail /> : <Navigate to="/admin" />} />
+                <Route path="/admin-panel/characteristic" element={isAuthenticated ? <Characteristic /> : <Navigate to="/admin" />} />
+
                 <Route path="/newproduct/:id" element={isAuthenticated ? <NewProduct /> : <Navigate to="/admin" />} />
             </Routes>
         </Router>

@@ -4,28 +4,31 @@ const ButtonDel = ({ selectedRequestIds, onDelete }) => {
     const [showModal, setShowModal] = useState(false);
 
     const handleDeleteClick = () => {
-        setShowModal(true); // Show confirmation modal
+        setShowModal(true);
     };
 
     const handleDelete = async () => {
         if (selectedRequestIds.length === 0) {
             console.error("No requests selected for deletion.");
-            return; // Exit if no requests are selected
+            return;
         }
 
         try {
-            const response = await fetch(`http://localhost:3001/api/delete-requests`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ ids: selectedRequestIds }) // Send array of IDs
-            });
+            const response = await fetch(
+                `http://localhost:3001/api/delete-requests`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ ids: selectedRequestIds }),
+                }
+            );
 
             if (response.ok) {
                 console.log("Запити успішно видалені");
-                onDelete(selectedRequestIds); // Notify parent component with all selected IDs
-                setShowModal(false); // Close the modal after deletion
+                onDelete(selectedRequestIds);
+                setShowModal(false);
             } else {
                 console.error("Помилка при видаленні запитів");
             }
@@ -35,19 +38,33 @@ const ButtonDel = ({ selectedRequestIds, onDelete }) => {
     };
 
     const closeModal = () => {
-        setShowModal(false); // Close the modal without deleting
+        setShowModal(false);
     };
 
     return (
         <>
             <button className="delete-button" onClick={handleDeleteClick}>
-                Видалити запис
+                Видалити
             </button>
             {showModal && (
-                <div className="modal">
-                    <p>Ви впевнені, що хочете видалити вибрані запити?</p>
-                    <button onClick={handleDelete}>Так, видалити</button>
-                    <button onClick={closeModal}>Скасувати</button>
+                <div className="modal-overlay">
+                    <div className="modal">
+                        <p>Ви впевнені, що хочете видалити вибрані запити?</p>
+                        <div className="modal-buttons">
+                            <button
+                                onClick={handleDelete}
+                                className="modal-button confirm"
+                            >
+                                Так, видалити
+                            </button>
+                            <button
+                                onClick={closeModal}
+                                className="modal-button cancel"
+                            >
+                                Скасувати
+                            </button>
+                        </div>
+                    </div>
                 </div>
             )}
         </>

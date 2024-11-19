@@ -1,9 +1,9 @@
-// OrderDetails.js
 import React, { useEffect, useState } from "react";
 import Admins from "../Components/Admin-header/admin-header";
 import Navigation from "../Components/Navigation/navigation";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import Pdf from "../Components/Pdf/Pdf";
 import "./OrderDetails.css";
 
 export default function OrderDetails() {
@@ -58,6 +58,18 @@ export default function OrderDetails() {
         );
     }
 
+    const getPaymentStatus = (status) => {
+        if (status === 1) {
+            return { text: "Оплачено" };
+        } else if (status === 2) {
+            return { text: "Накладний платіж" };
+        } else {
+            return { text: "Невідомо" };
+        }
+    };
+
+    const paymentStatus = getPaymentStatus(order.paymentstatus);
+
     return (
         <div className="admin-container1">
             <Admins />
@@ -67,7 +79,7 @@ export default function OrderDetails() {
                     <div className="order-column">
                         <h2>Замовлення №{order.id}</h2>
                         <div className="order-info">
-                            <p style={{ marginTop: "80px" }}>
+                            <p>
                                 <strong>Спосіб доставки:</strong>{" "}
                                 {order.shippingMethod}
                             </p>
@@ -107,6 +119,12 @@ export default function OrderDetails() {
                                       )
                                     : "Н/Д"}
                             </p>
+
+                            <p>
+                                <strong>Статус оплати:</strong>{" "}
+                                <span>{paymentStatus.text}</span>
+                            </p>
+                            <Pdf order={order} className="pdf-button" />
                         </div>
                     </div>
                     <div className="order-column">

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"; 
-import Admins from "../Admin-header/admin-header"; 
+import { useParams, useNavigate } from "react-router-dom";
+import Admins from "../Admin-header/admin-header";
 import Navigation from "../Navigation/navigation";
 import "./request-detail.css";
 import backArrow from "../../../Images/left-arrow.png";
 
 export default function RequestDetail() {
-    const { id_request } = useParams(); 
+    const { id_request } = useParams();
     const navigate = useNavigate();
     const [requestDetail, setRequestDetail] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -40,9 +40,9 @@ export default function RequestDetail() {
 
     return (
         <div className="admin-container1">
-            <Admins /> 
+            <Admins />
             <Navigation className="navigation1" />
-            
+
             <div className="request-detail-content">
                 <p
                     className="back-link2"
@@ -77,7 +77,9 @@ export default function RequestDetail() {
                     {requestDetail.city}
                 </div>
                 <div className="request-detail">
-                    <span className="request-detail-title">Питання клієнта:<br></br></span>{" "}
+                    <span className="request-detail-title">
+                        Питання клієнта:<br></br>
+                    </span>{" "}
                     <span className="request-detail-question">
                         {requestDetail.question.length > 30
                             ? requestDetail.question
@@ -88,7 +90,9 @@ export default function RequestDetail() {
                 </div>
 
                 <div className="request-detail">
-                    <span className="request-detail-title">Трекінговий код:</span>{" "}
+                    <span className="request-detail-title">
+                        Трекінговий код:
+                    </span>{" "}
                     {parseInt(requestDetail.tracking_code) === 0
                         ? "Відсутній"
                         : requestDetail.tracking_code}

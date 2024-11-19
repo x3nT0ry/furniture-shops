@@ -1,3 +1,8 @@
+.no-result-container1 {
+    margin-left: 500px;
+    padding-top: 100px;
+}
+
 .no-result-image {
     max-width: 365px;
     height: auto;
@@ -6,9 +11,9 @@
 }
 
 .no-result-text {
-    margin-top: 25px; 
-    margin-bottom: 40px;
+    margin-top: 25px;
     font-size: 22px;
     opacity: 0.6;
     margin-bottom: 150px;
 }
+

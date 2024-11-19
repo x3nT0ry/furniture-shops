@@ -6,7 +6,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 1100; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -32,24 +32,24 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.navigation ul {
+.navigations ul {
     list-style: none;
     padding: 0;
     display: flex;
 }
 
-.navigation li {
+.navigations li {
     margin: 0 15px;
 }
 
-.navigation .nav-link {
+.navigations .nav-link {
     color: #ffffff;
     font-size: 16px;
     transition: color 0.3s;
     text-decoration: none;
 }
 
-.navigation .nav-link:hover {
+.navigations .nav-link:hover {
     color: #c10015;
     text-decoration: none;
 }
@@ -59,12 +59,14 @@
 }
 
 .cart img {
+    margin-top: 5px;
     width: 38px;
     height: 36px;
     cursor: pointer;
 }
 
 .cart-badge {
+    margin-top: 5px;
     position: absolute;
     top: -5px;
     right: -5px;
@@ -77,6 +79,6 @@
     align-items: center;
     justify-content: center;
     min-width: 16px;
-    height: 16px;
+    height: 17px;
     box-sizing: border-box;
 }

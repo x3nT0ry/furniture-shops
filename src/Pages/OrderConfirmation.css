@@ -37,20 +37,6 @@
     margin: 10px 0;
 }
 
-.order-confirmation button {
-    padding: 10px 20px;
-    background-color: #0fba00;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1em;
-    margin-top: 20px;
-}
-
-.order-confirmation button:hover {
-    background-color: #439932;
-}
 .order-cancel button {
     padding: 10px 20px;
     background-color: #ba0000;
@@ -64,4 +50,23 @@
 
 .order-cancel button:hover {
     background-color: #9e3b3b;
+}
+
+.order-confirmation .button-container1 {
+    text-align: center;
+}
+
+.return-home {
+    padding: 10px 20px;
+    background-color: #0fba00;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
+.return-home:hover {
+    background-color: #439932;
 }

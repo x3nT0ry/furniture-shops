@@ -23,7 +23,7 @@ export default function Header() {
                 <Link className="logo" to="/">
                     <img src={logo} alt="Logo" />
                 </Link>
-                <nav className="navigation">
+                <nav className="navigations">
                     <ul>
                         <li>
                             <Link className="nav-link" to="/">

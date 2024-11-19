@@ -15,60 +15,45 @@ const PodrobniyProduct = ({ productId }) => {
                     `http://localhost:3001/api/product/${productId}`
                 );
 
-                const info = response.data.additionalInfo;
+                const data = response.data;
 
-                if (typeof info === "string") {
+                let additionalInfoData = data.additionalInfo;
+                if (typeof additionalInfoData === "string") {
                     try {
-                        const parsedInfo = JSON.parse(info);
-                        if (Array.isArray(parsedInfo)) {
-                            setAdditionalInfo(parsedInfo);
-                        } else {
-                            console.error(
-                                "Parsed additionalInfo is not an array:",
-                                parsedInfo
-                            );
-                            setAdditionalInfo([]);
-                        }
+                        additionalInfoData = JSON.parse(additionalInfoData);
                     } catch (error) {
-                        console.error("Error parsing additionalInfo:", error);
-                        setAdditionalInfo([]);
-                    }
-                } else if (Array.isArray(info)) {
-                    setAdditionalInfo(info);
-                } else {
-                    setAdditionalInfo([]);
-                }
-
-                let tablesData = response.data.tables;
-                if (typeof tablesData === "string") {
-                    try {
-                        tablesData = JSON.parse(tablesData);
-                    } catch (error) {
-                        console.error("Error parsing tables data:", error);
+                        console.error(
+                            "Помилка парсингу additionalInfo на фронтенді:",
+                            error
+                        );
+                        additionalInfoData = [];
                     }
                 }
 
-                if (Array.isArray(tablesData)) {
-                    setCharacteristics(tablesData);
-                } else {
-                    console.error("Tables data is not an array:", tablesData);
-                    setCharacteristics([]);
-                }
+                setAdditionalInfo(
+                    Array.isArray(additionalInfoData) ? additionalInfoData : []
+                );
+
+                setCharacteristics(
+                    Array.isArray(data.characteristics)
+                        ? data.characteristics
+                        : []
+                );
             } catch (error) {
-                console.error("Error fetching product data:", error);
+                console.error("Помилка при отриманні даних продукту:", error);
             }
         };
         fetchProductData();
     }, [productId]);
 
     const toggleDescription = () => {
-        setDescriptionOpen((prev) => !prev);
-        if (isCharacteristicsOpen) setCharacteristicsOpen(false);
+        setDescriptionOpen(true);
+        setCharacteristicsOpen(false);
     };
 
     const toggleCharacteristics = () => {
-        setCharacteristicsOpen((prev) => !prev);
-        if (isDescriptionOpen) setDescriptionOpen(false);
+        setCharacteristicsOpen(true);
+        setDescriptionOpen(false);
     };
 
     return (
@@ -89,14 +74,13 @@ const PodrobniyProduct = ({ productId }) => {
                             isCharacteristicsOpen ? "active" : "inactive"
                         }`}
                     >
-                        Характеристики
+                        Властивість
                     </button>
                 </div>
 
                 {isDescriptionOpen && (
                     <div className="description-content">
-                        {Array.isArray(additionalInfo) &&
-                        additionalInfo.length > 0 ? (
+                        {additionalInfo.length > 0 ? (
                             additionalInfo.map((info, index) => (
                                 <p key={index}>{info}</p>
                             ))
@@ -108,22 +92,26 @@ const PodrobniyProduct = ({ productId }) => {
 
                 {isCharacteristicsOpen && (
                     <div className="characteristics-content">
-                        <table className="characteristics-table">
-                            <thead>
-                                <tr>
-                                    <th>Характеристика</th>
-                                    <th>Значення</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {characteristics.map((item, index) => (
-                                    <tr key={index}>
-                                        <td>{item.left}</td>
-                                        <td>{item.right}</td>
+                        {characteristics.length > 0 ? (
+                            <table className="characteristics-table">
+                                <thead>
+                                    <tr>
+                                        <th>Властивість</th>
+                                        <th>Значення</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {characteristics.map((item, index) => (
+                                        <tr key={index}>
+                                            <td>{item.characteristic_title}</td>
+                                            <td>{item.option_title}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <p>Немає характеристик</p>
+                        )}
                     </div>
                 )}
             </div>

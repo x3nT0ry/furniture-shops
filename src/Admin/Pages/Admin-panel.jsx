@@ -6,9 +6,9 @@ import Panel from "../Components/Panel/Panel";
 
 export default function Admin() {
     return (
-        <div className="admin-container1"> 
+        <div className="admin-container1">
             <Admins />
-            <Navigation className="navigation1" /> 
+            <Navigation className="navigation1" />
             <Panel></Panel>
         </div>
     );

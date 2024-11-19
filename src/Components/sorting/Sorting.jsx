@@ -41,13 +41,14 @@ const Sorting = forwardRef(({ setFilteredProducts, originalProducts }, ref) => {
                 value={sortValue}
                 onChange={handleSortChangeInternal}
             >
-                <option value="">Сортування по ціні</option>
+                <option value="">Оберіть сортування</option>
                 <option value="asc">
                     Від мінімальної ціни до максимальної
                 </option>
                 <option value="desc">
                     Від максимальної ціни до мінімальної
                 </option>
+                <option value="id">Недавно додані меблі</option>
             </select>
         </div>
     );

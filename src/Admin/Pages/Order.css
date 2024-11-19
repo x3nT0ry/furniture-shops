@@ -1,52 +1,54 @@
-.content1 {
-    max-width: 1600px;
 
-    max-height: 400px;
+  .content1 {
+    max-width: 1600px;
+    max-height: 500px;
     overflow-y: auto;
     position: relative;
     display: flex;
-    justify-content: center; 
-}
-.orders-table {
+    justify-content: center;
+  }
+  
+  .orders-table {
     border-collapse: collapse;
     background-color: #727070;
-    margin: 0 auto; 
-}
-.orders-table-container{
+    margin: 0 auto;
+  }
+  
+  .orders-table-container {
     margin-left: 80px;
-}
-
-.orders-table thead {
+  }
+  
+  .orders-table thead {
     position: sticky;
     top: 0;
     background-color: #f2f2f2;
     z-index: 1;
-}
-
-.orders-table th {
+  }
+  
+  .orders-table th {
     padding: 12px;
     text-align: left;
     color: black;
     background: linear-gradient(to right, #f2f2f2, #e0e0e0);
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-.orders-table td {
+  }
+  
+  .orders-table td {
     border: 1px solid #ffffff;
     padding: 12px;
     text-align: left;
     color: #ffffff;
-}
-
-.orders-table tr:nth-child(odd) {
+  }
+  
+  .orders-table tr:nth-child(odd) {
     background-color: #8c8c8c;
-}
-
-.orders-table tr:nth-child(even) {
+  }
+  
+  .orders-table tr:nth-child(even) {
     background-color: #727070;
-}
-
-.details-button {
+  }
+  
+  .details-button {
     background-color: #c10015;
     color: white;
     border: none;
@@ -55,10 +57,9 @@
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.2s;
-}
-
-.details-button:hover {
+  }
+  
+  .details-button:hover {
     background-color: #c10017b0;
     transform: translateY(-2px);
-}
-
+  }

@@ -1,22 +1,40 @@
+.app-container {
+    margin-top: 80px;
+}
+
+.nav-container {
+    position: sticky;
+    top: 0;
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-right: 1px solid black;
+}
+
+.empty-space {
+    height: 86px;
+}
+
 .nav-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 200px;
-    height: 100px;
-    border: 1px solid black;
+    border-bottom: 1px solid black;
     cursor: pointer;
     padding: 20px 10px;
 }
 
-.nav-item.active {
-    background-color: black;
-    border-color: white;
-    border: 1px solid black;
+.nav-item:last-of-type {
+    border-bottom: none;
 }
 
-.nav-item img {
+.nav-item.active {
+    background-color: black;
+}
+
+.nav-img {
     width: 60px;
     height: 60px;
     margin-bottom: 10px;
@@ -26,13 +44,16 @@
     font-size: 18px;
     color: black;
     transition: color 0.3s ease;
+    text-align: center;
 }
 
 .nav-item.active .nav-text {
-    color: white; 
+    color: white;
 }
 
-.empty-space {
-    height: 173px;
-    border: 1px solid black;
+.content-container {
+    flex: 1;
+    margin-left: 220px;
+    padding: 20px;
+    overflow-y: auto;
 }

@@ -17,7 +17,7 @@
     position: sticky;
     top: 0;
     background-color: #fff;
-    z-index: 1;
+    z-index: 0;
 }
 .request-table th {
     padding: 12px;
@@ -39,7 +39,7 @@
 }
 
 .request-table tr:nth-child(odd) {
-    background-color: #8c8c8c; 
+    background-color: #8c8c8c;
 }
 
 .request-table tr:nth-child(even) {
@@ -99,4 +99,25 @@
 .button-group button:hover {
     opacity: 0.8;
     transform: translateY(-2px);
+}
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
 }

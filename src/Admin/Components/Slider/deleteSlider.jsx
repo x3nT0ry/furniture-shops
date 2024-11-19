@@ -28,19 +28,26 @@ export default function DeleteSlider({ closeModal, selectedSlides, onDelete }) {
     };
 
     return (
-        <div className="modal">
-            <p>Ви впевнені, що хочете видалити вибрані слайди?</p>
-            <button
-                onClick={handleDelete}
-                style={{
-                    backgroundColor: "black",
-                    color: "white",
-                    border: "none",
+        <div className="modal-overlay" onClick={closeModal}>
+            <div
+                className="modal"
+                onClick={(e) => {
+                    e.stopPropagation(); 
                 }}
             >
-                Так, видалити
-            </button>
-            <button onClick={closeModal}>Скасувати</button>
+                <p>Ви впевнені, що хочете видалити вибрані слайди?</p>
+                <button
+                    onClick={handleDelete}
+                    style={{
+                        backgroundColor: "#ff5c5c",
+                        color: "white",
+                        border: "none",
+                    }}
+                >
+                    Так, видалити
+                </button>
+                <button onClick={closeModal}>Скасувати</button>
+            </div>
         </div>
     );
 }
