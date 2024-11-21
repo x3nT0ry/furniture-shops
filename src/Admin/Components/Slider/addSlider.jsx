@@ -41,44 +41,46 @@ export default function AddSlider({ closeModal }) {
     };
 
     return (
-        <div className="modals">
-            <form onSubmit={handleSubmit}>
-                <h2>Додати слайд</h2>
-                <input
-                    type="text"
-                    placeholder="Назва"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-                <textarea
-                    placeholder="Опис"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-                <div className="file-input-container">
-                    <label
-                        className="custom-file-input"
-                        style={{ width: "82%" }}
-                    >
-                        {imageName}
-                        <input type="file" onChange={handleImageChange} />
-                    </label>
-                </div>
-                {image && (
-                    <div className="preview-container">
-                        <div className="image-preview">
-                            <img
-                                src={URL.createObjectURL(image)}
-                                alt="Попередній перегляд"
-                            />
-                        </div>
+        <div className="modal-overlay2">
+            <div className="modals">
+                <form onSubmit={handleSubmit}>
+                    <h2>Додати слайд</h2>
+                    <input
+                        type="text"
+                        placeholder="Назва"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                    />
+                    <textarea
+                        placeholder="Опис"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                    <div className="file-input-container">
+                        <label
+                            className="custom-file-input"
+                            style={{ width: "82%" }}
+                        >
+                            {imageName}
+                            <input type="file" onChange={handleImageChange} />
+                        </label>
                     </div>
-                )}
-                <button type="submit">Додати</button>
-                <button type="button" onClick={closeModal}>
-                    Скасувати
-                </button>
-            </form>
+                    {image && (
+                        <div className="preview-container">
+                            <div className="image-preview">
+                                <img
+                                    src={URL.createObjectURL(image)}
+                                    alt="Попередній перегляд"
+                                />
+                            </div>
+                        </div>
+                    )}
+                    <button type="submit">Додати</button>
+                    <button type="button" onClick={closeModal}>
+                        Скасувати
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }

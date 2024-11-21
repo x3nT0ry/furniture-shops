@@ -117,7 +117,7 @@ export default function AdminSlider() {
                             <th>Зображення</th>
                             <th>Заголовок</th>
                             <th>Опис</th>
-                            <th>Дії</th>
+                            <th>Дія</th>
                         </tr>
                     </thead>
                     <tbody>

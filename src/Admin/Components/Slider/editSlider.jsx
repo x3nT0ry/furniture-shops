@@ -58,37 +58,39 @@ export default function EditSlider({ closeModal, slide }) {
     };
 
     return (
-        <div className="modals">
-            <form onSubmit={handleSubmit}>
-                <h2>Редагувати слайд</h2>
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    placeholder="Назва"
-                />
-                <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    placeholder="Опис"
-                />
-                <div className="file-input-container" style={{ width: "89%" }}>
-                    <label className="custom-file-input" style={{ width: "100%" }}>
-                        {imageName}
-                        <input type="file" onChange={handleImageChange} />
-                    </label>
-                </div>
-
-                {imagePreview && (
-                    <div className="image-preview">
-                        <img src={imagePreview} alt="Image Preview" />
+        <div className="modal-overlay2">
+            <div className="modals">
+                <form onSubmit={handleSubmit}>
+                    <h2>Редагувати слайд</h2>
+                    <input
+                        type="text"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder="Назва"
+                    />
+                    <textarea
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                        placeholder="Опис"
+                    />
+                    <div className="file-input-container" style={{ width: "89%" }}>
+                        <label className="custom-file-input" style={{ width: "100%" }}>
+                            {imageName}
+                            <input type="file" onChange={handleImageChange} />
+                        </label>
                     </div>
-                )}
-                <button type="submit">Зберегти зміни</button>
-                <button type="button" onClick={closeModal}>
-                    Скасувати
-                </button>
-            </form>
+
+                    {imagePreview && (
+                        <div className="image-preview">
+                            <img src={imagePreview} alt="Попередній перегляд" />
+                        </div>
+                    )}
+                    <button type="submit">Зберегти зміни</button>
+                    <button type="button" onClick={closeModal}>
+                        Скасувати
+                    </button>
+                </form>
+            </div>
         </div>
     );
 }
